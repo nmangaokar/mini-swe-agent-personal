@@ -6,7 +6,7 @@ import typer
 import yaml
 from datasets import load_dataset
 
-from minisweagent.agents.interactive import InteractiveAgent
+from minisweagent.agents.interactive import InteractiveAgent, DefaultAgent
 from minisweagent.config import builtin_config_dir, get_config_path
 from minisweagent.models import get_model
 from minisweagent.run.extra.swebench import (
@@ -47,7 +47,7 @@ def main(
     _config = yaml.safe_load(get_config_path(config_path).read_text())
     env = get_environment(environment, _config, instance)
     # env.execute("mkdir -p random_directory/secret/secret/; echo 'Hello, World!' > random_directory/secret/secret/hello.txt")
-    agent = InteractiveAgent(
+    agent = DefaultAgent(
         get_model(model_name, _config.get("model", {})),
         env,
         **(_config.get("agent", {}) | {"mode": "yolo"}),
