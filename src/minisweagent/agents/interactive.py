@@ -97,6 +97,9 @@ class InteractiveAgent(DefaultAgent):
         return super().execute_action(action)
 
     def should_ask_confirmation(self, action: str) -> bool:
+        print("CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION")
+        print("CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION CHECKING IF SHOULD ASK CONFIRMATION")
+        print(self.config.mode)
         return self.config.mode == "confirm" and not any(re.match(r, action) for r in self.config.whitelist_actions)
 
     def ask_confirmation(self) -> None:
